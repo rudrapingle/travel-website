@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content=""width=device-width, initial-scale="1.0">
+        <title>ADVENTURE</title>
+
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <nav class="navbar">
+            <h1 class="logo">ADVENTURE</h1>
+            <ul class="nav-links">
+            <li class="active"><a href="#"></a>HOME</li>
+            <li><a href="#"></a>TOURS</li>
+            <li><a href="#"></a>EXPLORE</li>
+            <li><a href="#"></a>ABOUT</li>
+            <li class="ctn"><a href="#"></a>CONTACTS</li>
+            </ul>
+            <img src="./menu-btn.png" alt="" class="menu-btn">
+        </nav>
+        <header>
+            <div class="header-content">
+                <h2>Explore the colourful world</h2>
+                <div class="line"></div>
+                <h1>A WONDERFULL GIFT</h1>
+                <a href="#" class="ctn">Learn More</a>            </div>
+        </header>
+        <section class="events">
+            <div class="title">
+                <h1>upcoming events</h1>
+                <div class="line"></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img src="./trek.jpeg" alt="">
+                    <h4>EVEREST CAMP TREK</h4>
+                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. A deleniti iusto, fuga voluptas libero saepe! Illo, facilis non! Quidem quae debitis veritatis praesentium consequatur ab laboriosam repudiandae reiciendis labore dolorum!
+                        <a href="#" class="ctn">Learn More</a>
+                    </P>
+                </div>
+                <div class="col">
+                    <img src="./walking holidays.jpg" alt="">
+                    <h4>WALKING HOLIDAYS</h4>
+                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. A deleniti iusto, fuga voluptas libero saepe! Illo, facilis non! Quidem quae debitis veritatis praesentium consequatur ab laboriosam repudiandae reiciendis labore dolorum!
+                        <a href="#" class="ctn">Learn More</a>
+                    </P>
+                </div>
+            </div>
+        </section>
+        <section class="explore">
+            <div class="explore-content">
+            <h1>EXPLORE THE WORLD</h1>
+            <div class="line"></div>
+            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi omnis ad maiores odio doloribus blanditiis esse nesciunt soluta a. Est, consectetur culpa a inventore ad porro provident vel aut facere.</P>
+            <a href="#" class="ctn">Learn More</a>
+        </div>
+        </section>
+        
+        <section class="tours">
+            <div class="row">
+                <div class="col content-col">
+                    <h1>UPCOMING TOURS AND DESTINATIONS</h1>
+                    <div class="line"></div>
+                    <P>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit saepe voluptas ab officia soluta eius. Quasi magnam voluptas nemo, maiores dolores quis ducimus quia aspernatur veniam dolorum, esse optio. Facere?</P>
+                <a href="#" class="ctn">Learn More</a>                </div>
+                <div class="col image-col">
+                    <div class="image-gallery">
+                        <img src="./img 1.jpg" alt="">
+                        <img src="./img 2.jpeg" alt="">
+                        <img src="./img 3.jpg" alt="">
+                        <img src="./img 4.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="footer">
+            <p>Booking.com is part of Booking Holdings Inc., the world leader in online travel and related services.</p>
+            <p>Copyright © 1996–2023 Booking.com™. All rights reserved.</p>
+        </section>
+        <script>
+            const menuBtn = document.querySelector('.menu-btn')
+            const navlinks = document.querySelector('.nav-links')
+            menuBtn.addEventListener('click',()=>{
+                navlinks.classList.toggle('mobile-menu')
+            })
+        </script>
+
+    </body>
+</html>
