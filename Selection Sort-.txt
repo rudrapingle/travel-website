@@ -1,0 +1,21 @@
+Selection Sort:-
+
+import sys
+print("Enter no. of elements")
+a=int(input())
+print("Enter",a,"integer elements")
+array=[]
+for i in range(a):
+    array.append(int(input()))
+A=array
+for i in range(len(A)):
+    min_idx = i
+for j in range(i + 1, len(A)):
+      if A[min_idx] > A[j]:
+           min_idx = j
+ # Swap the found minimum element with the first element
+A[i], A[min_idx] = A[min_idx], A[i]
+# Driver code to test above
+print("Sorted array")
+print(A)
+
