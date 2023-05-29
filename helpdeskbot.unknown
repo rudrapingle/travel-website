@@ -1,0 +1,48 @@
+def get_response(user_input,ticket_type):
+    
+    user_input = user_input.lower()
+
+    if ticket_type == "Technical":
+        if "change password" in user_input:
+            return "to change your password, visit the password section in settings of our website."
+        elif "wifi connection" in user_input:
+            return "check your connection or retype the wifi password correctly."
+        else:
+            return "Sorry! i dont understant. please try again."
+
+    elif ticket_type == "Billing":
+        if "billing details" in user_input:
+            return "to check your billing details, visit our website and login. Then go to my account--> billing info"
+        elif "billing statement" in user_input:    
+            return "to check your billing details, visit our website and login. Download billing statement from bills section."
+        else:
+            return "Sorry! i dont understant. please try again."
+    
+    elif ticket_type == "General":
+        if "hours of operation" in user_input:
+            return "you can visit us from monday to Friday. 5am to 9pm."
+        elif "contact" in user_input:    
+            return "to contact us, please send us an email at helpdesk@gmail.com or call us at 988-987"
+        else:
+            return "Sorry! i dont understant. please try again."
+    
+    else:
+        return "Sorry! i dont have information about that type of ticket."
+    
+def main():
+    print("Welcome to helpdeskbot!")
+    while True:
+
+        ticket_type = input("What type of ticket do you have? (General,Billing,Technical)")
+
+        user_input = input("what type of information do you want?")
+
+        if user_input.lower() in ["quit","exit"]:
+            print("Thank you for using helpdeskbot!")
+            break    
+
+        response = get_response(user_input,ticket_type)
+        print(response)    
+
+if __name__ == "__main__":
+    main()    
