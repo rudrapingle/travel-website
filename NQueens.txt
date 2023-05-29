@@ -1,0 +1,48 @@
+class NQueens:
+    def _init_(self, n):
+        self.n = n
+        self.board = [-1] * n
+        self.solutions = []
+
+    def is_safe(self, row, col):
+        for prev_row in range(row):
+            prev_col = self.board[prev_row]
+            if col == prev_col or abs(row - prev_row) == abs(col - prev_col):
+                return False
+        return True
+
+    def solve(self):
+        self._solve_helper(0)
+
+    def _solve_helper(self, row):
+        if row == self.n:
+            solution = self.board.copy()
+            self.solutions.append(solution)
+            return
+
+        for col in range(self.n):
+            if self.is_safe(row,col):
+                self.board[row] = col
+                self._solve_helper(row + 1)
+                self.board[row] = -1
+
+    def display_solutions(self):
+        print(f"Total solutions: {len(self.solutions)}")
+        for i, solution in enumerate(self.solutions):
+            print(f"Solution {i + 1}:")
+            for row in range(self.n):
+                row_str = ""
+                for col in range(self.n):
+                    if solution[row] == col:
+                        row_str += "Q "
+                    else:
+                        row_str += ". "
+                print(row_str.strip())
+            print()
+
+
+# User-driven code
+n = int(input("Enter the number of queens: "))
+queens = NQueens(n)
+queens.solve()
+queens.display_solutions()

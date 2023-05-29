@@ -1,0 +1,40 @@
+BFS:-
+
+from collections import deque
+
+# define the graph as a dictionary of adjacency lists
+graph = {}
+# get the number of vertices and edges from the user
+n = int(input("Enter the number of vertices: "))
+m = int(input("Enter the number of edges: "))
+# get the edges from the user and build the adjacency lists
+for i in range(m):
+    u, v = map(int, input("Enter an edge (u v): ").split())
+    if u not in graph:
+        graph[u] = []
+    if v not in graph:
+        graph[v] = []
+    graph[u].append(v)
+    graph[v].append(u)
+# get the source vertex from the user
+s = int(input("Enter the source vertex: "))
+# initialize the visited array and the queue
+visited = [False] * (n+1)
+q = deque()
+# mark the source vertex as visited and enqueue it
+visited[s] = True
+q.append(s)
+
+
+
+# BFS algorithm
+while q:
+    # dequeue a vertex from the queue
+    u = q.popleft()
+    print(u, end=" ")
+    # visit all the neighbors of u
+    for v in graph[u]:
+        if not visited[v]:
+            visited[v] = True
+            q.append(v)
+

@@ -1,0 +1,43 @@
+# define a dictionary of menu items and their prices
+menu = {
+    'poha': 30,
+    'upma': 40,
+    'wadapav': 20,
+    'dosa': 50,
+    'burger': 70,
+    'fries': 60,
+    'soda': 20,
+    'pizza': 100,
+    'wings': 80
+}
+# define a function to calculate the total cost of the order
+def calculate_total(order):
+    total = 0
+    for item in order:
+        total += menu[item]
+    return total
+# define the main function for the chatbot
+def food_ordering_chatbot():
+    # greet the customer and display the menu
+    print("Welcome to the food ordering chatbot!")
+    print("Here's our menu:")
+    for item, price in menu.items():
+        print(f"{item}: Rs{price}")
+    # prompt the customer for their order
+    order = []
+    while True:
+        item = input("What would you like to order? Type 'done' when finished: ")
+        if item == 'done':
+            break
+        elif item in menu:
+            order.append(item)
+            print(f"{item} added to order.")
+        else:
+            print("Sorry, we don't have that item on our menu.")
+    # calculate the total cost of the order and display the billing information
+    total = calculate_total(order)
+    print(f"Your total cost is Rs{total:.2f}.")
+    print("Thank you for your order! Enjoy your meal.")
+# run the chatbot
+food_ordering_chatbot()
+
