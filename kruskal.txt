@@ -1,0 +1,52 @@
+def find(parent, node):
+    if parent[node] != node:
+        parent[node] = find(parent, parent[node])
+    return parent[node]
+
+def union(parent, rank, node1, node2):
+    root1 = find(parent, node1)
+    root2 = find(parent, node2)
+
+    if rank[root1] < rank[root2]:
+        parent[root1] = root2
+    elif rank[root1] > rank[root2]:
+        parent[root2] = root1
+    else:
+        parent[root2] = root1
+        rank[root1] += 1
+
+def kruskals_mst():
+    graph = {}
+    num_edges = int(input("Enter the number of edges: "))
+
+    for _ in range(num_edges):
+        node1, node2, cost = map(int, input("Enter edge (node1 node2 cost): ").split())
+
+        if node1 not in graph:
+            graph[node1] = []
+        if node2 not in graph:
+            graph[node2] = []
+
+        graph[node1].append((cost, node1, node2))
+        graph[node2].append((cost, node2, node1))
+
+    edges = [edge for neighbors in graph.values() for edge in neighbors]
+    edges.sort()
+
+    parent = {node: node for node in graph}
+    rank = {node: 0 for node in graph}
+    mst = []
+
+    for cost, node1, node2 in edges:
+        if find(parent, node1) != find(parent, node2):
+            union(parent, rank, node1, node2)
+            mst.append((node1, node2, cost))
+
+    print("Minimum Spanning Tree:")
+    for edge in mst:
+        print(edge)
+
+kruskals_mst()
+
+
+
