@@ -1,0 +1,38 @@
+import heapq
+
+def prims_mst():
+    graph = {}
+    num_edges = int(input("Enter the number of edges: "))
+
+    for _ in range(num_edges):
+        node1, node2, cost = map(int, input("Enter edge (node1 node2 cost): ").split())
+
+        if node1 not in graph:
+            graph[node1] = []
+        if node2 not in graph:
+            graph[node2] = []
+
+        graph[node1].append((node2, cost))
+        graph[node2].append((node1, cost))
+
+    start_node = int(input("Enter the starting node: "))
+
+    mst = []
+    visited = set([start_node])
+    edges = [(cost, start_node, neighbor) for neighbor, cost in graph[start_node]]
+    heapq.heapify(edges)
+
+    while edges:
+        cost, node1, node2 = heapq.heappop(edges)
+        if node2 not in visited:
+            visited.add(node2)
+            mst.append((node1, node2, cost))
+            for neighbor, cost in graph[node2]:
+                if neighbor not in visited:
+                    heapq.heappush(edges, (cost, node2, neighbor))
+
+    print("Minimum Spanning Tree:")
+    for edge in mst:
+        print(edge)
+
+prims_mst()
