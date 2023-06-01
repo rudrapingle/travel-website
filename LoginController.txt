@@ -1,0 +1,62 @@
+<apex:page controller="LoginController">
+    <apex:form style="max-width: 400px; margin: 0 auto;">
+        <apex:pageMessages />
+
+        <h2 style="text-align: center;">Login</h2>
+
+        <div style="margin-bottom: 10px;">
+            <label for="username" style="display: block;">Username:</label>
+            <apex:inputText id="username" value="{!username}" required="true" styleClass="form-control" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="password" style="display: block;">Password:</label>
+            <apex:inputSecret id="password" value="{!password}" required="true" styleClass="form-control" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="age" style="display: block;">Age:</label>
+            <apex:inputText id="age" value="{!age}" required="true" styleClass="form-control" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="gender" style="display: block;">Gender:</label>
+            <apex:selectList id="gender" value="{!gender}" required="true" styleClass="form-control">
+                <apex:selectOption itemValue="Male" itemLabel="Male" />
+                <apex:selectOption itemValue="Female" itemLabel="Female" />
+                <apex:selectOption itemValue="Other" itemLabel="Other" />
+            </apex:selectList>
+        </div>
+
+        <div style="text-align: center;">
+            <apex:commandButton value="Login" action="{!doLogin}" styleClass="btn btn-primary" />
+        </div>
+    </apex:form>
+</apex:page>
+
+
+
+public class LoginController {
+    public String username { get; set; }
+    public String password { get; set; }
+    public Integer age { get; set; }
+    public String gender { get; set; }
+
+    public PageReference doLogin() {
+        // Perform authentication logic here
+        if (username == 'admin' && password == 'password') {
+            // Successful login
+            return new PageReference('/apex/YourHomePage'); // Replace 'YourHomePage' with the actual name of your home page
+        } else {
+            // Failed login
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Invalid username or password.'));
+            return null;
+        }
+    }
+    
+    // Method to check if there are any error messages
+    public Boolean hasErrorMessages() {
+        return ApexPages.getMessages().size() > 0;
+    }
+}
+
